@@ -1,36 +1,93 @@
-<h3>Edit Post</h3>
-<div class="row">
-    <form action="/stories/{{story._id}}" method="POST" class="col s12">
-        <input type="hidden" name="_method" value="PUT">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {{> _sidebar}}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                    {{> _top-navbar}}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                {{!-- TODO --}}
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Edit Posts</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="/stories" method="POST" class="col s12">
         <div class="row">
             <div class="input-field">
-                <input type="text" id="title" name="title" value="{{story.title}}">
-                <label for="title">Title</label>
+                <label for="title" class="form-label" >Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{story.title}}">
             </div>
         </div>
 
         <div class="row">
             <div class="input-field">
-                <select id="status" name="status">
-                    {{#select story.status}}
-                    <option value="public" selected>Public</option>
-                    <option value="private">Private</option>
-                    {{/select}}
-                </select>
-                <label for="status">Status</label>
+                <label for="status" class="form-label">Status</label>
+                    <select class="form-control form-select" name="status">
+                        <option  value="public" selected>Public</option>
+                        <option value="private">Private</option>
+                    </select>
             </div>
         </div>
 
-        <div class="row">
+        <div class="mt-3">
             <div class="input-field">
                 <h5>Tell Us Your Story:</h5>
-                <textarea id="body" name="body">{{story.body}}</textarea>
+                <textarea id="body" name="body" class="text-area">{{story.body}}</textarea>
             </div>
         </div>
 
-        <div class="row">
-            <input type="submit" value="Save" class="btn">
-            <a href="/dashboard" class="btn orange">Cancel</a>
+
+        <div class="row mt-3 d-flex g-2">
+            <input type="submit" value="Confirm" class="btn btn-primary" >
+            <a href="/dashboard" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        <!-- End of Content Wrapper -->
+       
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/auth/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   

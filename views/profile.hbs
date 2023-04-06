@@ -1,0 +1,28 @@
+{{> _top-navbar}}
+
+<div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Your Posts</h6>
+                        </div>
+                        <div class="card-body d-flex  g-4">
+                            <div class="profile-image">
+                                <img src="{{image}}" class="img-fluid custom-profile-logo ">
+                            </div>
+                            <div class="profile-detail">
+                               <span class="fs-2">{{name}}</span> <br>
+                               <small class="fs-2">{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</small> 
+                            </div>
+                        </div>
+
+                        <div class="card-body d-flex g-4">
+                            Total Post  :    
+                            Public Post :   
+                            Private Post :  
+                        </div>
+                    </div>
+
+                </div>

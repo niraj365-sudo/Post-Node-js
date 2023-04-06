@@ -54,7 +54,7 @@ app.engine('.hbs', exphbs.engine({helpers:{
     stripTags,
     editIcon,
     select
-}, extname: '.hbs', defaultLayout: "main"}))
+}, extname: '.hbs', defaultLayout: "main", layoutsDir: __dirname+ "/views/layouts"}))
 app.set('view engine', '.hbs')
 
 //Session
@@ -78,16 +78,24 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //Set Global variable
-app.use((req, res, next)=>{
-    res.locals.user = req.user || null
-    next()
-})
+
+   const user =  app.use((req, res, next)=>{
+        res.locals.user = req.user || null
+        next()
+    })
+
+   console.log(user);
+
+
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 //Calling Routes
 app.use('/', require('./routes/index'))
+
+
+
 app.use('/auth', require('./routes/auth'))
 app.use('/stories',require('./routes/stories'))
 

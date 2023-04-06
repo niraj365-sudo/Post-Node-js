@@ -11,9 +11,71 @@ p{
     font-size: 16px !important;
 }
 .btn-float{
+    display: flex;
+    color: red;
     float: left;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 .img-small{
-    width: 180px;
+    width: 200px;
+}
+.form-inp{
+    display: flex;
+    gap: 10px;
+}
+.btn-custom{
+    align-items: center;
+    border: none;
+    font-weight: 400;
+    color: #858796;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    border: 1px solid transparent;
+    width: 10%;
+}
+.btn-custom:hover{
+    color: #4e73df;
+}
+.g-2{
+    gap: 10px;
+}
+.g-4{
+    gap: 20px;
+}
+.post-container{
+    background-color: rgb(230, 216, 216) !important;
+}
+.logo-img{
+    padding: 5px;
+    width: 5%;
+    border-radius: 50%;
+}
+ .like-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+  }
+
+  
+  .like-button.filled {
+    background-color: red;
+    color: rgb(0, 0, 0);
+  }
+
+.custom-profile-logo{
+    border: 7px solid #858796;
+    border-radius: 50%;
+}
+.profile-detail > span {
+    font-size: 30px;
+}
+.footer-text{
+    align-items: center;
+    justify-content: end;
+}
+
+a:hover{
+    text-decoration: none !important;
 }

@@ -31,6 +31,17 @@ router.get("/dashboard", ensureAuth, async(req, res)=>{
    
 })
 
+//@desc Login/Profile page
+//@route GET /profile
+
+router.get("/profile", ensureAuth, (req, res)=>{
+    res.render('profile')
+})
+
+router.post('/profile', ensureAuth, async(req, res)=>{
+    const count = await Story.count({ user})
+    
+})
 
 
 module.exports = router
