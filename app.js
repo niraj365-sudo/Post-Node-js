@@ -45,7 +45,8 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 //Handlebars Helpers
-const { formatDate, stripTags, truncate, editIcon, select } = require('./helpers/hbs')
+const { formatDate, stripTags, truncate, editIcon, select,eq } = require('./helpers/hbs')
+
 
 //Configure Handlebars
 app.engine('.hbs', exphbs.engine({helpers:{
@@ -53,7 +54,9 @@ app.engine('.hbs', exphbs.engine({helpers:{
     truncate,
     stripTags,
     editIcon,
-    select
+    select,
+    eq
+    
 }, extname: '.hbs', defaultLayout: "main", layoutsDir: __dirname+ "/views/layouts"}))
 app.set('view engine', '.hbs')
 
@@ -79,12 +82,11 @@ app.use(passport.session())
 
 //Set Global variable
 
-   const user =  app.use((req, res, next)=>{
+    app.use((req, res, next)=>{
         res.locals.user = req.user || null
         next()
     })
 
-   console.log(user);
 
 
 

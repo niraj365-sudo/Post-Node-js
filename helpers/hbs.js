@@ -1,4 +1,5 @@
 const moment =  require('moment')
+const hbs = require('handlebars')
 
 module.exports = {
     formatDate: (date, format)=>{
@@ -39,5 +40,13 @@ module.exports = {
             new RegExp('>' + selected + '</option>'),
             ' selected="selected"$&'
           )
+      },
+      eq: function(arg1, arg2) {
+        if(arg1 == arg2){
+          return true
+      }else{
+         return false
       }
+      }
+
 }

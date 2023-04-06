@@ -31,8 +31,18 @@
                 <div class="card-image d-flex g-2 p-2">
                     <img src="{{user.image}}" alt="" class="logo-img">
                     <div class="card-detail ">
-                        <a href="/stories/user/{{user._id}}"> {{user.displayName}} </a>
-                         {{{editIcon user ../user _id}}} {{!-- ../user means go one step above from loop i.e each stories and  grab user--}}
+                        <a href="/stories/user/{{user._id}}" >
+                        {{#if (eq user.displayName "Niraj Paudel")}}
+                            {{user.displayName}}
+                            <i class="fa-sharp fa-solid fa-circle-check mr-5"></i>
+                        {{else}}
+                            {{user.displayName}}
+                        {{/if}}
+                         </a>
+
+                            {{{editIcon user ../user _id}}} {{!-- ../user means go one step above from loop i.e each stories and  grab user--}}
+
+                         
                         <br>
                         {{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}
                     </div>
