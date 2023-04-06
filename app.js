@@ -10,10 +10,6 @@ const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
 
-
-
-
-
 //Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -84,20 +80,18 @@ app.use(passport.session())
 
     app.use((req, res, next)=>{
         res.locals.user = req.user || null
+        res.locals.name = req.user?.displayName
+        res.locals.image = req.user?.image
+       // console.log(req.user);
         next()
     })
 
-
-
-
+ 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 //Calling Routes
 app.use('/', require('./routes/index'))
-
-
-
 app.use('/auth', require('./routes/auth'))
 app.use('/stories',require('./routes/stories'))
 

@@ -41,7 +41,7 @@ module.exports = {
             ' selected="selected"$&'
           )
       },
-      eq: function(arg1, arg2) {
+      eq: (arg1, arg2)=> {
         if(arg1 == arg2){
           return true
       }else{
