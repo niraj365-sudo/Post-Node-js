@@ -53,8 +53,87 @@
                     <div> {{stripTags (truncate body )}} </div> {{!-- truncate value is empty now {{stripTags (truncate body empty )}} to set change value of empty to no. of strings you want eg: {{stripTags (truncate body 150 )}}   --}}
                     <div class="social-icons">
                         <hr>
-                        <button id="like-button" class="like-button d-flex"><i class="fa-regular fa-heart fa-2xs-alt"></i></button>
-                        
+                        <button id="like-button" class="like-button d-flex g-4  ">
+                            <i class="fa-regular fa-heart fa-2xs-alt"></i>
+                            <a href="#"><i class="fa-regular fa-comment"></i></a>
+                            </button>
+                        {{!-- <!-- Switch Section --> --}}
+                          <div class="card mb-2">
+                            <div class="card-body p-2 d-flex align-items-center">
+                                 <h6 class="text-primary fw-bold small mb-0 mr-4">Show Comments</h6>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input toggle-switch" type="checkbox" data-post-id="{{user._id}}" checked>
+                                    </div>
+                                </div>
+                            </div>
+                        {{!-- <!-- End of Switch Section --> --}}
+                        {{!-- <!-- Comment Section --> --}}
+          <div class="card mb-3" id="comments-{{user._id}}">
+            <div class="card-body">
+              <div class="d-flex flex-start">
+                <img class="rounded-circle shadow-1-strong me-3"
+                  src="{{user.image}}" alt="avatar" width="40"
+                  height="40" />
+                <div class="w-100">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="text-primary fw-bold mb-0">
+                      {{user.displayName}}
+                      <span class="text-dark ms-2">
+                        Hmm, This poster looks cool</span>
+                    </h6>
+                    <p class="mb-0">2 days ago</p>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p class="small mb-0" style="color: #aaa;">
+                      <a href="#!" class="link-grey">Remove</a> •
+                      <a href="#!" class="link-grey">Reply</a> •
+                      <a href="#!" class="link-grey">Translate</a>
+                    </p>
+                    <div class="d-flex flex-row">
+                      <i class="fas fa-star text-warning me-2"></i>
+                      <i class="far fa-check-circle" style="color: #aaa;"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{!-- <!--End of Comment Section --> --}}
+          {{!-- Comment Add Section --}}
+          
+            {{!-- Sample Comment --}}
+            <div class="container">
+
+            <div class="card">
+                    <form action="/comments/add" method="post">
+                       <div class="d-flex ">
+                        <input type="text" name="story_id" value={{_id}} style="display: none">
+                        <input type="text" class="form-control border-0" placeholder="Add a comment" name="comment">
+                        <button class="btn btn-primary" type="Submit">Submit</button>
+                       </div>
+                    </form>
+            </div> 
+            {{!-- End Sample Comment --}}
+          </div>
+          {{!-- End of Comment Add Section --}}
+          {{!-- Script for toggle switch --}}
+            <script>
+                const toggleSwitches = document.querySelectorAll('.toggle-switch');
+                toggleSwitches.forEach(function(toggleSwitch) {
+                const postId = toggleSwitch.dataset.postId;
+                const commentsDiv = document.querySelector(`#comments-${postId}`);
+                toggleSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                alert(commentsDiv)
+                    commentsDiv.style.display = 'block';
+                } else {
+                    commentsDiv.style.display = 'none';
+                }
+                });
+                });
+            </script>
+
+          {{!-- EndScript for toggle switch --}}
                         <a href="/stories/{{_id}}" class="text-secondary footer-text d-flex">Read More</a>
                     </div>
                 </div>
