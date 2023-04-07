@@ -22,7 +22,21 @@ const StorySchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    commentList: 
+       [
+            {
+                commentId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Comment'
+                },
+                storyId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Story'
+                }
+            }
+        ] 
+    
 })
 
 module.exports = mongoose.model('Story', StorySchema)
